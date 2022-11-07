@@ -12,11 +12,18 @@
   <body>
     <div class="container mt-3">
         <h1>Tensorflow Test</h1>
+        {% if ans %}
+
+        <div class="alert alert-success" role="alert">
+          O número é: <b>{{ans}}</b>
+        </div>
+
+        {% endif %} 
         <h3>Entrada</h3>
-        <form action="{{url_for('handle_input')}}" method="post">
+        <form action="{{url_for('handle_input')}}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="image" class="form-label">Imagem de um número:</label>
-                <input class="form-control" type="file" name="image" id="image">
+                <input class="form-control" type="file" name="image" id="image" required>
             </div>
             <button type="submit" class="btn btn-primary float-end">Enviar</button>
         </form>
