@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -17,7 +18,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 
-@app.get("/")
+@app.route("/", methods=['GET'])
 def index():
     ans = request.args.get('ans')
     prob = request.args.get('prob')
@@ -28,7 +29,7 @@ def index():
 
     return render_template("index.html", ans=ans, prob=prob)
 
-@app.post("/process")
+@app.route("/process", methods=['POST'])
 def handle_input():
     img_input = request.files['image']
     img_input.save("./server/tmp/img.jpg")
