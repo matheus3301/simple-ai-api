@@ -20,7 +20,13 @@ output_details = interpreter.get_output_details()
 @app.get("/")
 def index():
     ans = request.args.get('ans')
-    return render_template("index.html", ans=ans)
+    prob = request.args.get('prob')
+
+    if prob:
+        prob = float(prob)*100
+
+
+    return render_template("index.html", ans=ans, prob=prob)
 
 @app.post("/process")
 def handle_input():
@@ -40,6 +46,7 @@ def handle_input():
     out_as_list = output[0].tolist()
 
     ans = out_as_list.index(max(out_as_list))
+    prob = max(out_as_list)
 
-    return redirect(url_for('index', ans=ans))
+    return redirect(url_for('index', ans=ans, prob=prob))
 

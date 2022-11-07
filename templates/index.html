@@ -12,10 +12,10 @@
   <body>
     <div class="container mt-3">
         <h1>Tensorflow Test</h1>
-        {% if ans %}
+        {% if ans and prob%}
 
         <div class="alert alert-success" role="alert">
-          O número é: <b>{{ans}}</b>
+          Com {{prob}}%, o número é: <b>{{ans}}!</b>
         </div>
 
         {% endif %} 
